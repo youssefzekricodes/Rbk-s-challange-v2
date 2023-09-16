@@ -1,7 +1,7 @@
 import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { PATH } from "../../Routes/paths.routes";
-import { RootState } from "../../../data/store/index";
+import { RootState } from "../../data/store/index";
 import { ReactComponent as Arrow } from "../../assets/icons/arrow.svg";
 import { ReactComponent as GitHub } from "../../assets/icons/github.svg";
 import { ReactComponent as Youtube } from "../../assets/icons/youtube.svg";

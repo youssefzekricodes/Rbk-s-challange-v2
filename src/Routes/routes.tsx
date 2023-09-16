@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import LayoutFragment from "../components/LayoutFragment";
 import MainLayout from "../layout/Layout";
 import { PATH } from "./paths.routes";
+import React from "react";
 interface IRouteItem {
   exact: boolean;
   path: string;

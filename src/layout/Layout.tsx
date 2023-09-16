@@ -1,6 +1,7 @@
 import { ReactElement } from "react";
 import Header from "./components/Header/Header";
 import Side from "./components/Side/Side";
+import React from "react";
 
 export default function Layout({
   children,
