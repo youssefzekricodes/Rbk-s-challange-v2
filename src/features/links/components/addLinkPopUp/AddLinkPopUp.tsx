@@ -27,9 +27,9 @@ export default function AddLinkPopUp() {
         (ele: { origin: string }) => ele.origin === selectedOption
       );
       if (links.length === 0) {
-        dispatch(addUserLink({ url: values.url, origin: selectedOption })).then(
-          dispatch(hideModal())
-        );
+        dispatch(addUserLink({ url: values.url, origin: selectedOption }))
+        dispatch(hideModal())
+
       } else {
         setErrorMessage("Link already added");
         setTimeout(() => setErrorMessage(""), 2000);
@@ -60,10 +60,10 @@ export default function AddLinkPopUp() {
           <LinkInput
             label={"link"}
             value={formik.values.url}
-            error={formik.touched.url && formik.errors.url}
+            // error={formik.touched.url && formik.errors.url}
             name="url"
             onChange={formik.handleChange}
-            onBlur={formik.handelBlur}
+            onBlur={formik.handleBlur}
           />
           <Select
             selectedOption={selectedOption}
