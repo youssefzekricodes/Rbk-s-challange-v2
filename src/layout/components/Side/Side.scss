@@ -66,8 +66,8 @@
   &__links {
     @include flex(column);
     gap: 1rem;
-    width: 14vw;
-    min-width: 14rem;
+    width: 13vw;
+    min-width: 10rem;
     &__link {
       @include flex(row, space-between, center);
       padding: 0.5rem 1rem;
