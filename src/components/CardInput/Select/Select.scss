@@ -2,6 +2,7 @@
 .Select{
     @include flex(column);
     width: 100%;
+    gap: 0.2rem;
     &__selectedOption{
         @include flex(row , space-between , center);
         padding: 0.4rem 1rem;
@@ -16,6 +17,25 @@
           path{
               fill : rgb(152, 3, 206);
           }
+        }
+    }
+    &__Options{
+        @include flex(column , start , start);
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        width: 100%;
+        border: 1px solid #cacaca;
+        background: white;
+        box-shadow: 0 0 5px rgba(142, 0, 219, 0.11);
+        &__option{
+            @include flex(row , start);
+            gap: 0.5rem;
+            width: 100%;
+            border-bottom: 1px solid rgb(195, 195, 195);
+            padding: 0.2rem;
+            &:last-child{
+                border: 0;
+            }
         }
     }
 }
