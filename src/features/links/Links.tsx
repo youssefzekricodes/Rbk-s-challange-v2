@@ -15,7 +15,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 export default function Links() {
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: any) => state.user);
-  const UserLinks = user?.links
+  const UserLinks = user?.links;
   const [selectedOption, setSelectedOption] = useState("GitHub");
   return (
     <div className="Card__content Links">
@@ -30,31 +30,32 @@ export default function Links() {
         <p>Add new link</p>
       </div>
       <div className="Links__Container">
-        <DndProvider backend={HTML5Backend}>
-          {UserLinks.map(
-            (link: { url: string; origin: string }, i: number) => (
-              <div className="Links__linkContainer">
-                <div className="Links__linkContainer__headerblock">
-                  <p className="Links__linkContainer__title">
-                    <DraggIcon />
-                    Link #{i + 1}
-                  </p>
-                  <p
-                    className="remove"
-                    onClick={() => dispatch(removeUserLink(link.origin))}
-                  >
-                    Remove
-                  </p>
+        <div className="Scroll__container">
+          <DndProvider backend={HTML5Backend}>
+            {UserLinks.map(
+              (link: { url: string; origin: string }, i: number) => (
+                <div className="Links__linkContainer">
+                  <div className="Links__linkContainer__headerblock">
+                    <p className="Links__linkContainer__title">
+                      <DraggIcon />
+                      Link #{i + 1}
+                    </p>
+                    <p
+                      className="remove"
+                      onClick={() => dispatch(removeUserLink(link.origin))}>
+                      Remove
+                    </p>
+                  </div>
+                  <LinkInput label={"link"} value={link.url} />
+                  <Select
+                    selectedOption={link.origin}
+                    setSelectedOption={setSelectedOption}
+                  />
                 </div>
-                <LinkInput label={"link"} value={link.url} />
-                <Select
-                  selectedOption={link.origin}
-                  setSelectedOption={setSelectedOption}
-                />
-              </div>
-            )
-          )}
-        </DndProvider>
+              )
+            )}
+          </DndProvider>
+        </div>
       </div>
     </div>
   );

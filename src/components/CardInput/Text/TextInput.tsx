@@ -14,7 +14,7 @@ export default function TextInput({
   name?: string;
   onChange: any;
   onBlur: any;
-  error : string | undefined;
+  error: any | undefined;
 }) {
   const [activeInput, setActiveInput] = useState(false);
   return (

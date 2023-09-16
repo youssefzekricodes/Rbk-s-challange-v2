@@ -27,8 +27,6 @@
     padding: 1rem 0;
     border-top: 1px solid rgb(207, 207, 207);
     @include flex(row, flex-end);
-    position: absolute;
-    bottom: 0
   }
   &__Element {
     @include flex(column, start, start);
@@ -96,5 +94,17 @@
   }
   to {
     opacity: 1;
+  }
+}
+.Scroll__container{
+  overflow-y: auto;
+  @include flex(column ,start ,start);
+  gap: 1rem;
+  width: 100%;
+  height: 60vh;
+  padding: 1rem;
+  border-radius: 12px;
+  &::-webkit-scrollbar{
+    display: none;
   }
 }

@@ -7,7 +7,7 @@ import AddLinkPopUp from "./features/links/components/addLinkPopUp/AddLinkPopUp"
 import routes, { renderRoutes } from "./Routes/routes";
 
 function App() {
-  const { modalOpen } = useSelector<RootState>((state) => state.modals);
+  const { modalOpen } = useSelector<RootState ,any>((state) => state.modals);
   return (
     <div className="App">
       {modalOpen ? <AddLinkPopUp /> : null}
