@@ -1,0 +1,16 @@
+@use '../../assets/scss/Mixins' as *;
+.Card__content{
+    animation: Enter 0.3s ease-in-out;
+    @include flex(column , start , start);
+    gap: 1rem;
+    width: 100%;
+    height: 100%;
+}
+@keyframes Enter {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

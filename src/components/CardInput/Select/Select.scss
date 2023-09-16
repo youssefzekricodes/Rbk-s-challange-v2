@@ -1,0 +1,21 @@
+@use '../../../assets/scss/Mixins' as *;
+.Select{
+    @include flex(column);
+    width: 100%;
+    &__selectedOption{
+        @include flex(row , space-between , center);
+        padding: 0.4rem 1rem;
+        border-radius: 6px;
+        width: 100%;
+        border: 1px solid #cacaca;
+        background: white;
+        cursor: pointer;
+        svg{
+          width: 18px;
+          height: 18px;
+          path{
+              fill : rgb(152, 3, 206);
+          }
+        }
+    }
+}

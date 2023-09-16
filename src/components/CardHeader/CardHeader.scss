@@ -1,0 +1,17 @@
+.Card__header{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    p{
+        &:first-child{
+            font-size: 27px;
+            font-weight: 700;
+            color: #3c3c3c;
+        }
+        &:nth-child(2){
+            color: rgb(142, 142, 142);
+            font-size: 13px;
+        }
+    }
+}
