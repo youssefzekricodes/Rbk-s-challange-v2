@@ -1,5 +1,6 @@
 export const PATH = {
-  PROFILE: '/profile',
-  LINKS: '/',
-  ERROR: '**',
+  PROFILE: "/profile",
+  LINKS: "/",
+  Preview: "/Preview",
+  ERROR: "**",
 };

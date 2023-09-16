@@ -1,6 +1,7 @@
 import { ComponentType, Fragment, LazyExoticComponent } from "react";
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
+import LayoutFragment from "../components/LayoutFragment";
 import MainLayout from "../layout/Layout";
 import { PATH } from "./paths.routes";
 interface IRouteItem {
@@ -48,6 +49,12 @@ const routes: IRouteItem[] = [
     path: PATH.LINKS,
     component: lazy(() => import("../views/Links")),
     layout: MainLayout,
+  },
+  {
+    exact: true,
+    path: PATH.Preview,
+    component: lazy(() => import("../views/Preview")),
+    layout: LayoutFragment,
   },
 ];
 

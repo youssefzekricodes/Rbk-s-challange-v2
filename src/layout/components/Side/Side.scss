@@ -1,29 +1,113 @@
-@use '../../../assets/scss/Mixins' as * ;
-.Side{
-    @include flex();
-    width:100%;
-    height: 100%;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.085);
-    padding: 3rem 1rem;
-&__PhoneFrame{
+@use "../../../assets/scss/Mixins" as *;
+.Side {
+  @include flex();
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.085);
+  padding: 3rem 1rem;
+  &__PhoneFrame {
     animation: PhoneEnter 1s ease-in-out;
     width: 100%;
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-}
+    @include flex(column, start);
+    gap: 1rem;
+    @media screen and (max-width: 1200px) {
+      height: 50rem;
+    }
+  }
+  &__avatar {
+    margin-top: 10rem;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 5px solid #633bff;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    margin-bottom: 1rem;
+  }
+
+  &__Cordinate {
+    @include flex(column);
+    gap: 1rem;
+    p {
+      &:first-child {
+        font-weight: 500;
+        font-size: 22px;
+      }
+      &:last-child {
+        font-size: 18px;
+        font-weight: 300;
+        color: rgba(163, 163, 163, 0.948);
+      }
+    }
+    &--empty{
+    
+      height: 1rem;
+      background: #EEEEEE;
+      border-radius: 12px;
+      &:first-child{
+        width: 15rem;
+      }
+      &:last-child{
+        width: 10rem;
+        margin-bottom: 2rem
+      }
+    }
+  }
+  &__links {
+    @include flex(column);
+    gap: 1rem;
+    width: 14vw;
+    min-width: 14rem;
+    &__link {
+      @include flex(row, space-between, center);
+      padding: 0.5rem 1rem;
+      width: 100%;
+      height: 3rem;
+      border-radius: 8px;
+      color: white;
+      text-decoration: none;
+      &__type {
+        @include flex();
+        gap: 1rem;
+      }
+      svg path {
+        fill: white;
+      }
+    }
+    .Youtube {
+      background: rgb(246, 43, 43);
+    }
+    .GitHub {
+      background: rgb(0, 0, 0);
+    }
+    .LinkedIn {
+      background: #2d69fe;
+    }
+  }
 }
 
 @keyframes PhoneEnter {
-    from{
-        transform: translateY(50px);
-        opacity: 0;
-    }
-    to{
-        transform: translateY(0);
-        opacity: 1;
-    }
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.emptyavatar {
+  border: 0;
+  background: #eeeeee;
 }

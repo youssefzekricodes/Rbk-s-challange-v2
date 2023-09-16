@@ -1,16 +1,38 @@
+import * as React from "react";
+import { useState } from "react";
+
 export default function TextInput({
   label,
-  defaultValue,
+  value,
   name,
+  onChange,
+  onBlur,
+  error,
 }: {
   label: string;
-  defaultValue: string;
+  value: string;
   name?: string;
+  onChange: any;
+  onBlur: any;
+  error : string | undefined;
 }) {
+  const [activeInput, setActiveInput] = useState(false);
   return (
     <div className="TextInput">
       <p className="TextInput__label">{label}</p>
-      <input type="text" defaultValue={defaultValue} name={name} />
+      <input
+        type="text"
+        className={`${activeInput ? "input--active" : ""}`}
+        value={value}
+        name={name}
+        onChange={onChange}
+        onBlur={() => {
+          setActiveInput(false);
+          onBlur;
+        }}
+        onFocus={() => setActiveInput(true)}
+      />
+      <p>{error}</p>
     </div>
   );
 }
