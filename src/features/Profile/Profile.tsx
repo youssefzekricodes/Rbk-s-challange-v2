@@ -9,6 +9,7 @@ export default function () {
           "Add your details to create a personell touch to your profile"
         }
       />
+
     </div>
   );
 }
