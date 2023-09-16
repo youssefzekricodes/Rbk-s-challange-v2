@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { NavLink } from "react-router-dom";
 import { PATH } from "../../../Routes/paths.routes";
 import { ReactComponent as LinkIcon } from "../../../assets/icons/link.svg";

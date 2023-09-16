@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { useSelector } from "react-redux";
 import frame from "../../../assets/images/phoneframe.jpg";
 import { RootState } from "../../../data/store/index";
