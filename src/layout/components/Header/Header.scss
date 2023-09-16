@@ -1,0 +1,81 @@
+@use "../../../assets/scss/Mixins" as *;
+.Header {
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.085);
+  height: 75px;
+  @include flex(row, space-between);
+  &__title {
+    @include flex();
+    font-weight: 700;
+    font-size: 24px;
+    color: rgb(65, 65, 65);
+    gap: 8px;
+    svg {
+      width: 30px;
+      height: 24px;
+      border-radius: 6px;
+    }
+  }
+  &__links {
+    @include flex();
+    gap: 1rem;
+    &__btn {
+      @include flex();
+      padding: 0.6rem 1.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      gap: 0.6rem;
+      @media screen and (max-width: 600px) {
+        padding: 0.6rem 1rem;
+      }
+      p {
+        user-select: none;
+        color: rgb(89, 89, 89);
+        font-weight: 500;
+      }
+      svg {
+        path {
+          fill: rgb(89, 89, 89);
+        }
+      }
+      &:active {
+        color: rgb(110, 34, 233);
+      }
+      &:hover {
+        background: rgba(186, 163, 222, 0.118);
+      }
+      &--active {
+        background: rgba(110, 34, 233, 0.11);
+        p {
+          color: #633bff;
+        }
+        &:hover {
+          background: rgba(110, 34, 233, 0.11);
+        }
+        svg path {
+          fill: #633bff;
+        }
+      }
+    }
+  }
+  &__preview {
+    color: #633bff;
+    border: 1px solid #633bff;
+    border-radius: 8px;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 045s ease-in-out;
+    text-decoration: none;
+    &:hover {
+      color: white;
+      background-color: #633bff;
+      box-shadow: 0 0 10px #633bff;
+    }
+  }
+}

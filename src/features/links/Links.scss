@@ -1,0 +1,58 @@
+@use "../../assets/scss/Mixins" as *;
+.Links {
+  gap: 2rem;
+  &__button {
+    width: 100%;
+    @include flex();
+    gap: 1rem;
+    border: 1px solid rgb(116, 43, 234);
+    padding: 1rem;
+    color: rgb(116, 43, 234);
+    border-radius: 8px;
+    cursor: pointer;
+    svg path {
+      fill: rgb(116, 43, 234);
+    }
+    p {
+      font-size: 500;
+      font-size: 16px;
+    }
+  }
+  &__Container {
+    @include flex(column);
+    width: 100%;
+    gap: 2rem;
+  }
+  &__linkContainer {
+    @include flex(column, start, start);
+    gap: 1rem;
+    width: 100%;
+    background: #FAFAFA;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.31);
+    cursor: grab;
+    &__headerblock {
+      @include flex(row, space-between);
+      width: 100%;
+      .remove {
+        font-size: 15px;
+        font-weight: 400;
+        color: rgb(96, 96, 96);
+        cursor: pointer;
+      }
+    }
+    &__title {
+      @include flex();
+      gap: 0.5rem;
+      font-size: 17px;
+      font-weight: 600;
+      color: rgb(102, 101, 101);
+      svg {
+        path {
+          fill: rgb(102, 101, 101);
+        }
+      }
+    }
+  }
+}
