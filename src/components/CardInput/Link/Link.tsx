@@ -13,11 +13,11 @@ export default function LinkInput({
   name?: string;
   onChange?: any;
   onBlur?: any;
-  error?: string;
+  error?: any;
 }) {
-  // console.log(error, "error");
+   console.log(error, "error");
   return (
-    <div className="LinkInput">
+    <div className={`LinkInput ${error ? '--errroMessage' : ''}`}>
       <p className="LinkInput__label">{label}</p>
       <div className="LinkInput__input">
         <LinkIcon />
@@ -29,6 +29,7 @@ export default function LinkInput({
           onBlur={onBlur}
         />
       </div>
+      <p className="ErrorMessage">{error}</p>
     </div>
   );
 }

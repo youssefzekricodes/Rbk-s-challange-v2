@@ -17,22 +17,25 @@ export default function TextInput({
   error: any | undefined;
 }) {
   const [activeInput, setActiveInput] = useState(false);
+  console.log(error, "error");
   return (
-    <div className="TextInput">
+    <div className={`TextInput ${error ? "input--error" : ""}`}>
       <p className="TextInput__label">{label}</p>
-      <input
-        type="text"
-        className={`${activeInput ? "input--active" : ""}`}
-        value={value}
-        name={name}
-        onChange={onChange}
-        onBlur={() => {
-          setActiveInput(false);
-          onBlur;
-        }}
-        onFocus={() => setActiveInput(true)}
-      />
-      <p>{error}</p>
+      <div className="TextInput__inputBlock">
+        <input
+          type="text"
+          className={`${activeInput ? "input--active" : ""}`}
+          value={value}
+          name={name}
+          onChange={onChange}
+          onBlur={e => {
+            setActiveInput(false);
+            onBlur(e);
+          }}
+          onFocus={() => setActiveInput(true)}
+        />
+        <p className="ErrorMessage">{error}</p>
+      </div>
     </div>
   );
 }

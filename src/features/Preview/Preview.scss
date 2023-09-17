@@ -4,6 +4,9 @@
   height: 100vh;
   @include flex(row, center, start);
   position: relative;
+  .Side__avatar {
+    margin-top: 8vh;
+}
   &__header {
     padding: 1rem 2rem;
     width: 100%;
@@ -34,8 +37,17 @@
     position: absolute;
     top: 10rem;
     border-radius: 12px;
-    @media screen and (max-width : 600px) {
-        width: 22rem;
+    @media screen and (max-width : 1600px) {
+      width: 20rem;
+      height: 30rem;
     }
+    @media screen and (max-width : 600px) {
+        width: 25rem;
+        height: 40rem;
+    }
+    @media screen and (max-width : 400px) {
+      width: 20rem;
+    
+  }
   }
 }

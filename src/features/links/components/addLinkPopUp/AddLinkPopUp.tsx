@@ -12,11 +12,14 @@ import { ReactComponent as ErrorIcon } from "../../../../assets/icons/error.svg"
 export default function AddLinkPopUp() {
   const dispatch = useDispatch<AppDispatch>();
   const schema = Yup.object().shape({
-    url: Yup.string().min(2, "too short !  ").required("link"),
+    url: Yup.string()
+      .min(2, "too short !  ")
+      .url("invalid format url")
+      .required("url is required"),
   });
   const [selectedOption, setSelectedOption] = useState("GitHub");
   const [errorMessage, setErrorMessage] = useState("");
-  const { user } = useSelector<RootState, any>((state) => state.user);
+  const { user } = useSelector<RootState, any>(state => state.user);
   const formik = useFormik({
     initialValues: {
       url: "",
@@ -27,9 +30,8 @@ export default function AddLinkPopUp() {
         (ele: { origin: string }) => ele.origin === selectedOption
       );
       if (links.length === 0) {
-        dispatch(addUserLink({ url: values.url, origin: selectedOption }))
-        dispatch(hideModal())
-
+        dispatch(addUserLink({ url: values.url, origin: selectedOption }));
+        dispatch(hideModal());
       } else {
         setErrorMessage("Link already added");
         setTimeout(() => setErrorMessage(""), 2000);
@@ -42,13 +44,11 @@ export default function AddLinkPopUp() {
     event.preventDefault();
     formik.handleSubmit();
   };
-
   return (
     <div className="ModalContainer">
       <div
         className="ModalContainer__Background"
-        onClick={() => dispatch(hideModal())}
-      ></div>
+        onClick={() => dispatch(hideModal())}></div>
       <div className="ModalContainer__popUp">
         <form onSubmit={handleSubmit}>
           <p className="ModalContainer__popUp__title">Add new link</p>
@@ -60,7 +60,7 @@ export default function AddLinkPopUp() {
           <LinkInput
             label={"link"}
             value={formik.values.url}
-            // error={formik.touched.url && formik.errors.url}
+            error={formik.touched.url && formik.errors.url}
             name="url"
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -73,14 +73,12 @@ export default function AddLinkPopUp() {
             <button
               className="ModalContainer__popUp__buttons__btn cancel"
               onClick={() => dispatch(hideModal())}
-              type="reset"
-            >
+              type="reset">
               Cancel
             </button>
             <button
               className="ModalContainer__popUp__buttons__btn save"
-              type="submit"
-            >
+              type="submit">
               Save
             </button>
           </div>

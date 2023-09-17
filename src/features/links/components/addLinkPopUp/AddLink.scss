@@ -22,6 +22,9 @@
     z-index: 12;
     box-shadow: 0 0 30px rgba(85, 18, 208, 0.177);
     padding: 1rem;
+    @media screen and (max-width : 1200px) {
+      width: 30rem;
+    }
     &__errors {
       @include flex();
       width: 100%;

@@ -31,3 +31,10 @@
       }
     }
 }
+.--errroMessage{
+  .LinkInput__label{color: red;} 
+  .LinkInput__input{
+    border-color: rgb(246, 34, 77);
+    box-shadow: 0 0 20px rgba(215, 31, 71, 0.138);
+  }
+}

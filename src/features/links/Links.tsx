@@ -10,13 +10,46 @@ import { AppDispatch } from "../../data/store/index";
 import { showModal } from "../../data/slices/modals";
 import { useState } from "react";
 import { removeUserLink } from "../../data/slices/user";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
+import {
+  DndContext,
+  MouseSensor,
+  TouchSensor,
+  closestCenter,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  arrayMove,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { SortableItem } from "./components/SortableItem";
 export default function Links() {
   const dispatch = useDispatch<AppDispatch>();
   const { user } = useSelector((state: any) => state.user);
-  const UserLinks = user?.links;
+  const [UserLinks, setUserLinks] = useState(user?.links);
+  console.log(UserLinks, "links");
+  React.useEffect(() => setUserLinks(user?.links), [user?.links]);
   const [selectedOption, setSelectedOption] = useState("GitHub");
+  const [isDragging, setIsDragging] = useState(false);
+  const sensors = 
+  (useSensor(MouseSensor), useSensor(TouchSensor));
+  function handleDragStart(event) {
+    event.stopPropagation();
+    setIsDragging(true);
+  }
+  function handleDragEnd(event) {
+    setIsDragging(false);
+    const { active, over } = event;
+    if (active.id !== over.id) {
+      setUserLinks((items: any) => {
+        const oldIndex = items.indexOf(active.id);
+        const newIndex = items.indexOf(over.id);
+
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+  }
   return (
     <div className="Card__content Links">
       <CardHeader
@@ -30,32 +63,47 @@ export default function Links() {
         <p>Add new link</p>
       </div>
       <div className="Links__Container">
-        <div className="Scroll__container">
-          <DndProvider backend={HTML5Backend}>
+        <DndContext
+          autoScroll={false}
+          sensors={sensors}
+          collisionDetection={closestCenter}
+          onDragStart={handleDragStart}
+          onDragEnd={handleDragEnd}>
+          <SortableContext
+            items={UserLinks}
+            strategy={verticalListSortingStrategy}>
             {UserLinks.map(
               (link: { url: string; origin: string }, i: number) => (
-                <div className="Links__linkContainer">
-                  <div className="Links__linkContainer__headerblock">
-                    <p className="Links__linkContainer__title">
-                      <DraggIcon />
-                      Link #{i + 1}
-                    </p>
-                    <p
-                      className="remove"
-                      onClick={() => dispatch(removeUserLink(link.origin))}>
-                      Remove
-                    </p>
+                <SortableItem
+                  key={link.origin}
+                  id={link}
+                  someoneIsDragging={isDragging}>
+                  <div className="Links__linkContainer">
+                    <div className="Links__linkContainer__headerblock">
+                      <p className="Links__linkContainer__title">
+                        <DraggIcon />
+                        Link #{i + 1}
+                      </p>
+                      <p
+                        className="remove"
+                        onClick={() => {
+                          console.log("first");
+                          dispatch(removeUserLink(link.origin));
+                        }}>
+                        Remove
+                      </p>
+                    </div>
+                    <LinkInput label={"link"} value={link.url} />
+                    <Select
+                      selectedOption={link.origin}
+                      setSelectedOption={setSelectedOption}
+                    />
                   </div>
-                  <LinkInput label={"link"} value={link.url} />
-                  <Select
-                    selectedOption={link.origin}
-                    setSelectedOption={setSelectedOption}
-                  />
-                </div>
+                </SortableItem>
               )
             )}
-          </DndProvider>
-        </div>
+          </SortableContext>
+        </DndContext>
       </div>
     </div>
   );
