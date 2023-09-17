@@ -4,6 +4,7 @@
   height: 100vh;
   @include flex(row, center, start);
   position: relative;
+  animation: Enter 1s ease;
   .Side__avatar {
     margin-top: 8vh;
 }
@@ -37,6 +38,7 @@
     position: absolute;
     top: 10rem;
     border-radius: 12px;
+    animation: EnterPhone 0.5s ease-in-out;
     @media screen and (max-width : 1600px) {
       width: 20rem;
       height: 30rem;
@@ -49,5 +51,21 @@
       width: 20rem;
     
   }
+  }
+}
+@keyframes Enter {
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
+}
+@keyframes EnterPhone {
+  from{
+    transform: translateY(50px);
+  }
+  to{
+    transform: translateY(0);
   }
 }

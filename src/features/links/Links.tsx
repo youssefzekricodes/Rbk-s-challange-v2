@@ -35,7 +35,6 @@ export default function Links() {
   const sensors = 
   (useSensor(MouseSensor), useSensor(TouchSensor));
   function handleDragStart(event) {
-    event.stopPropagation();
     setIsDragging(true);
   }
   function handleDragEnd(event) {
@@ -65,7 +64,6 @@ export default function Links() {
       <div className="Links__Container">
         <DndContext
           autoScroll={false}
-          sensors={sensors}
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}>
